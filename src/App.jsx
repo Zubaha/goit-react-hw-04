@@ -63,8 +63,10 @@ function App() {
       <SearchBar onSubmit={handleSubmit} />
       {loading && <Loader />}
       {error && <ErrorMessage message={error} />}
-      {images.length > 0 && (
+      {images.length > 0 ? (
         <ImageGallery images={images} openModal={openModal} />
+      ) : (
+        query.length > 0 && <p className="error">No photos</p>
       )}
       {images.length > 0 && hasMore && (
         <LoadMoreBtn loadMoreBtn={imageLoadMore} />
